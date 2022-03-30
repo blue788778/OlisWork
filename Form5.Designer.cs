@@ -40,7 +40,7 @@
             // videoSourcePlayer1
             // 
             this.videoSourcePlayer1.Location = new System.Drawing.Point(56, 44);
-            this.videoSourcePlayer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.videoSourcePlayer1.Margin = new System.Windows.Forms.Padding(4);
             this.videoSourcePlayer1.Name = "videoSourcePlayer1";
             this.videoSourcePlayer1.Size = new System.Drawing.Size(719, 257);
             this.videoSourcePlayer1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // button_Open
             // 
             this.button_Open.Location = new System.Drawing.Point(135, 345);
-            this.button_Open.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Open.Margin = new System.Windows.Forms.Padding(4);
             this.button_Open.Name = "button_Open";
             this.button_Open.Size = new System.Drawing.Size(100, 29);
             this.button_Open.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(135, 409);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(160, 23);
             this.comboBox1.TabIndex = 2;
@@ -71,7 +71,7 @@
             // button_Pic
             // 
             this.button_Pic.Location = new System.Drawing.Point(135, 452);
-            this.button_Pic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Pic.Margin = new System.Windows.Forms.Padding(4);
             this.button_Pic.Name = "button_Pic";
             this.button_Pic.Size = new System.Drawing.Size(100, 29);
             this.button_Pic.TabIndex = 3;
@@ -121,9 +121,10 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button_Open);
             this.Controls.Add(this.videoSourcePlayer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form5";
             this.Text = "Form5";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form5_FormClosed);
             this.Load += new System.EventHandler(this.Form5_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
