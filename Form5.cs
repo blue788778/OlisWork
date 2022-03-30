@@ -25,6 +25,7 @@ namespace OlisWork
         FilterInfoCollection videoDevices;
         VideoCaptureDevice videoSource;
         int selectedDeviceIndex = 0;
+        bool isStart = false;
 
         private void Form5_Load(object sender, EventArgs e)
         {
@@ -39,16 +40,18 @@ namespace OlisWork
                 comboBox1.Items.Add(resolution_size);
             }
         }
-        /// <summary>
-        /// 123
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (isStart == true)
+            {
+                videoSourcePlayer1.Stop();
+            }
+            isStart = true;
             videoSource.VideoResolution = videoSource.VideoCapabilities[comboBox1.SelectedIndex];
             videoSourcePlayer1.VideoSource = videoSource;
             videoSourcePlayer1.Start();
+
         }
 
         private void button_Open_Click(object sender, EventArgs e)
