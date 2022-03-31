@@ -64,9 +64,9 @@ namespace OlisWork
             }
             Bitmap bitmap = videoSourcePlayer1.GetCurrentVideoFrame();
             string fileName = "Work" + DateTime.Now.ToString("yyyy-MM-dd") + ".jpg";    // 自訂檔案預設名字
-
             SaveFileDialog saveFileDialog = new SaveFileDialog();              // 給使用者選取儲存檔案的位置 / SaveFileDialog()-初始化這個類別的新執行個體
             saveFileDialog.FileName = fileName;                                // 存檔時檔案名字=檔案預設名字
+            saveFileDialog.Filter = "jpeg (*.jpeg)|*.jpeg";                    // 預設檔案類型使用JPEG
             if (saveFileDialog.ShowDialog() == DialogResult.OK)                // ShowDialog()-呼叫對話方塊 / DialogResult.OK-對話方塊的傳回值
             {
                 bitmap.Save(saveFileDialog.FileName);                          // 儲存檔案
