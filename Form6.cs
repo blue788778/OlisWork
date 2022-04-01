@@ -13,7 +13,6 @@ namespace OlisWork
 {
     public partial class Form6 : Form
     {
-
         string txt_FilePath = "";                          // 用來記錄當前開啟檔案路徑
         public Form6()
         {
@@ -64,6 +63,7 @@ namespace OlisWork
                 MessageBox.Show("Gooddddddddddddddddd !");
             }
         }
+
         // 在TextBox_Read下讀取檔案的文字內容
         void ReadTxt()
         {
