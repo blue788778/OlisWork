@@ -15,12 +15,27 @@ namespace OlisWork
         public Form7_Browse(string url)
         {
             InitializeComponent();
-            open(url);
+            try
+            {
+                open(url);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         public void open(string url)
         {
-            webBrowser1.Navigate(new Uri(url)) ;
+            try
+            {
+                webBrowser1.Navigate(new Uri(url));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

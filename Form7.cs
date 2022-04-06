@@ -20,11 +20,16 @@ namespace OlisWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread t = new Thread(new ThreadStart(new_form));
-
-            t.SetApartmentState(System.Threading.ApartmentState.STA);
-
-            t.Start();
+            try
+            {
+                Thread t = new Thread(new ThreadStart(new_form));
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void new_form()

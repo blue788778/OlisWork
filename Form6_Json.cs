@@ -33,38 +33,51 @@ namespace OlisWork
             //NameJ name = new NameJ();
             //name.Name = textBoxJWrite.Text;
 
-            NameJ nameJ = new NameJ()
+            try
             {
-                Name = textBoxJWrite.Text,
-            };
-            var name = JObject.FromObject(nameJ);
+                NameJ nameJ = new NameJ()
+                {
+                    Name = textBoxJWrite.Text,
+                };
+                var name = JObject.FromObject(nameJ);
 
-            string output = JsonConvert.SerializeObject(name);
-            File.WriteAllText(path, jsonFile +$"[{ "," + "\r\n" + output}]");
+                string output = JsonConvert.SerializeObject(name);
+                File.WriteAllText(path, jsonFile + $"[{ "," + "\r\n" + output}]");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Read()
         {
             textBoxJRead.Text = "";
 
-            jsonFile = File.ReadAllText(path);
-
-            //List<NameJ> NameJ = JsonConvert.DeserializeObject<List<NameJ>>(jsonFile);
-
-            //NameJ nameJ = new NameJ();
-
-            //for (int i = 0; i <= NameJ.Count - 1; i++)
-            //{
-            //    textBoxJRead.Text += NameJ[i].Name.ToString() + Environment.NewLine;
-            //}
-
-            JArray jsonArray = JArray.Parse(jsonFile);
-
-            for (int i = 0; i <= jsonArray.Count - 1; i++)
+            try
             {
-                textBoxJRead.Text += jsonArray[i].ToString() + "," + "\r\n";
-            }
+                jsonFile = File.ReadAllText(path);
 
+                //List<NameJ> NameJ = JsonConvert.DeserializeObject<List<NameJ>>(jsonFile);
+
+                //NameJ nameJ = new NameJ();
+
+                //for (int i = 0; i <= NameJ.Count - 1; i++)
+                //{
+                //    textBoxJRead.Text += NameJ[i].Name.ToString() + Environment.NewLine;
+                //}
+
+                JArray jsonArray = JArray.Parse(jsonFile);
+
+                for (int i = 0; i <= jsonArray.Count - 1; i++)
+                {
+                    textBoxJRead.Text += jsonArray[i].ToString() + "," + "\r\n";
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

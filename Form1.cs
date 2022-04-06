@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using obiz_load_data;
 
 namespace OlisWork
 {
     public partial class Form1 : Form
     {
-
+        Msg_log msg_Log = new Msg_log();
         Graphics graphics;
         int FirstPointX, FirstPointY;                                          // FirstPointX, FirstPointY 是繪圖起點的座標(X,Y)，MouseDown事件發生時的預設位置
         Pen pen;
         string select;                                                         // 右鍵選擇時能夠做判斷
+        string AppName = "小畫家";
 
         public Form1()
         {
@@ -35,63 +37,81 @@ namespace OlisWork
         // 小畫家塗鴉時滑鼠壓下後的起點
         private void Draw_FirstPoint_Down(object sender, MouseEventArgs e)
         {
-            pen = new Pen(colorDialog1.Color, int.Parse(toolStripComboBox1.Text));       // 宣告新畫筆(new Pen)，顏色來自colorDialog1的Color屬性，筆的粗細來自下拉選單(toolStripComboBox1)的文字
-            
-            if (e.Button == MouseButtons.Left)
+            try
             {
-                switch (select)                                                // 判斷有無右鍵選擇過形狀
+                pen = new Pen(colorDialog1.Color, int.Parse(toolStripComboBox1.Text));       // 宣告新畫筆(new Pen)，顏色來自colorDialog1的Color屬性，筆的粗細來自下拉選單(toolStripComboBox1)的文字
+
+                if (e.Button == MouseButtons.Left)
                 {
-                    case "Elselected":                                         // 選擇是圓形的話
-                        
-                        graphics.DrawEllipse(pen, e.X, e.Y, 40, 40);           // 繪圖物件graphics畫一個圓形(DrawEllipse)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小40x40
-                        drawPanel.Refresh();                                   // 更新(Refresh)容器內的影像內容
-                        break;
+                    switch (select)                                                // 判斷有無右鍵選擇過形狀
+                    {
+                        case "Elselected":                                         // 選擇是圓形的話
 
-                    case "Reselected":                                         // 選擇是方形的話
+                            graphics.DrawEllipse(pen, e.X, e.Y, 40, 40);           // 繪圖物件graphics畫一個圓形(DrawEllipse)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小40x40
+                            drawPanel.Refresh();                                   // 更新(Refresh)容器內的影像內容
+                            break;
 
-                        graphics.DrawRectangle(pen, e.X, e.Y, 50, 50);         // 繪圖物件graphics畫一個方形(DrawRectangle)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小50x50
-                        drawPanel.Refresh();                                   // 更新(Refresh)容器內的影像內容
-                        break;
+                        case "Reselected":                                         // 選擇是方形的話
 
-                    default:
-                        FirstPointX = e.X;                                     // 繪製線條時滑鼠線條的第一個位置
-                        FirstPointY = e.Y;
-                        break;
+                            graphics.DrawRectangle(pen, e.X, e.Y, 50, 50);         // 繪圖物件graphics畫一個方形(DrawRectangle)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小50x50
+                            drawPanel.Refresh();                                   // 更新(Refresh)容器內的影像內容
+                            break;
+
+                        default:
+                            FirstPointX = e.X;                                     // 繪製線條時滑鼠線條的第一個位置
+                            FirstPointY = e.Y;
+                            break;
+                    }
                 }
+            } catch (Exception ex)
+            {
+                msg_Log.save_log(AppName, ex);
             }
         }
         // 塗鴉時壓下滑鼠後繼續壓住到新的一點
         private void Draw_ToNewPoint_Move(object sender, MouseEventArgs e)
         {
-
-            if (e.Button == MouseButtons.Left)                                 // 判斷壓下的是不是左鍵
+            try
             {
-                switch (select)
+                if (e.Button == MouseButtons.Left)                                 // 判斷壓下的是不是左鍵
                 {
-                    case "Elselected":
-                        break;
-                    case "Reselected":
-                        break;
-                    default:
-                        pen = new Pen(colorDialog1.Color, int.Parse(toolStripComboBox1.Text));     // 宣告新畫筆(new Pen)，顏色來自colorDialog1的Color屬性，筆的粗細來自下拉選單(toolStripComboBox1)的文字
+                    switch (select)
+                    {
+                        case "Elselected":
+                            break;
+                        case "Reselected":
+                            break;
+                        default:
+                            pen = new Pen(colorDialog1.Color, int.Parse(toolStripComboBox1.Text));     // 宣告新畫筆(new Pen)，顏色來自colorDialog1的Color屬性，筆的粗細來自下拉選單(toolStripComboBox1)的文字
 
-                        graphics.DrawLine(pen, FirstPointX, FirstPointY, e.X, e.Y);      // 繪圖物件graphics畫一個線段(DrawLine)，使用上述之新畫筆，起點為(FirstPointX, FirstPointY)到(e.X, e.Y)
+                            graphics.DrawLine(pen, FirstPointX, FirstPointY, e.X, e.Y);      // 繪圖物件graphics畫一個線段(DrawLine)，使用上述之新畫筆，起點為(FirstPointX, FirstPointY)到(e.X, e.Y)
 
-                        FirstPointX = e.X;                                               // 畫完後將終點變成新的起點(FirstPointX = e.X、FirstPointY = e.Y)
-                        FirstPointY = e.Y;
+                            FirstPointX = e.X;                                               // 畫完後將終點變成新的起點(FirstPointX = e.X、FirstPointY = e.Y)
+                            FirstPointY = e.Y;
 
-                        drawPanel.Refresh();                                             // 更新(Refresh)容器內的影像內容
-                        break;
+                            drawPanel.Refresh();                                             // 更新(Refresh)容器內的影像內容
+                            break;
+                    }
                 }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
         
         // 彈出右鍵菜單
         private void MenuCircle_Up(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            try
             {
-                contextMenuStrip_Circle.Show(drawPanel, e.Location);           // 菜單Show在右鍵的位置上
+                if (e.Button == MouseButtons.Right)
+                {
+                    contextMenuStrip_Circle.Show(drawPanel, e.Location);           // 菜單Show在右鍵的位置上
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -25,14 +25,20 @@ namespace OlisWork
         // 在更新資料後也跟著更新畫面上資料
         public void Load_Update()
         {
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from Student", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            con.Close();
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-
+            try
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from Student", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                con.Close();
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         // 新增按鈕按下後新增Student資料
         private void buttonAdd_Click(object sender, EventArgs e)

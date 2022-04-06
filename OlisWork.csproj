@@ -128,6 +128,7 @@
     <Compile Include="Form7_Browse.Designer.cs">
       <DependentUpon>Form7_Browse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Msg_log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlCURD.cs" />
