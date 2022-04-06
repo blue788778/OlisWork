@@ -16,7 +16,7 @@ namespace OlisWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form6_Json());
+            Application.Run(new Form7());
         }
     }
 }

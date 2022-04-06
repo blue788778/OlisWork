@@ -110,6 +110,24 @@
     <Compile Include="Form6_Json.Designer.cs">
       <DependentUpon>Form6_Json.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form6_XML.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form6_XML.Designer.cs">
+      <DependentUpon>Form6_XML.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form7.Designer.cs">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form7_Browse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form7_Browse.Designer.cs">
+      <DependentUpon>Form7_Browse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlCURD.cs" />
@@ -138,6 +156,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form6_Json.resx">
       <DependentUpon>Form6_Json.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form6_XML.resx">
+      <DependentUpon>Form6_XML.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form7.resx">
+      <DependentUpon>Form7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form7_Browse.resx">
+      <DependentUpon>Form7_Browse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
