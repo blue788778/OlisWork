@@ -44,26 +44,8 @@ namespace OlisWork
 
                 if (e.Button == MouseButtons.Left)
                 {
-                    // 判斷有無右鍵選擇過形狀
-                    switch (select)
-                    {
-                        case "Elselected":                                     // 選擇是圓形的話
-
-                            myGraphics.DrawEllipse(myPen, e.X, e.Y, 40, 40);   // 繪圖物件graphics畫一個圓形(DrawEllipse)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小40x40
-                            panDraw.Refresh();                                 // 更新(Refresh)容器內的影像內容
-                            break;
-
-                        case "Reselected":                                     // 選擇是方形的話
-
-                            myGraphics.DrawRectangle(myPen, e.X, e.Y, 50, 50); // 繪圖物件graphics畫一個方形(DrawRectangle)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小50x50
-                            panDraw.Refresh();                                 // 更新(Refresh)容器內的影像內容
-                            break;
-
-                        default:
-                            FirstPointX = e.X;                                 // 繪製線條時滑鼠線條的第一個位置
-                            FirstPointY = e.Y;
-                            break;
-                    }
+                    FirstPointX = e.X;                                                             // 繪製時滑鼠線條的第一個位置
+                    FirstPointY = e.Y;
                 }
             }
             catch (Exception ex)
@@ -118,6 +100,34 @@ namespace OlisWork
                 {
                     ctms_Circle.Show(panDraw, e.Location);                     // 菜單Show在右鍵的位置上
                 }
+
+                // 選擇後的形狀
+                if(e.Button == MouseButtons.Left)
+                {
+                    if(ctms_Circle != null)
+                    {
+                        // 選擇的形狀
+                        switch (select)
+                        {
+                            case "Elselected":
+                                myPen = new Pen(colorDialog1.Color, int.Parse(toolStripComboBox1.Text));    // 宣告新畫筆(new Pen)，顏色來自colorDialog1的Color屬性，筆的粗細來自下拉選單(toolStripComboBox1)的文字
+
+                                myGraphics.DrawEllipse(myPen, FirstPointX, FirstPointY, e.X, e.Y);          // 繪圖物件graphics畫一個圓形(DrawEllipse)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小40x40
+
+                                panDraw.Refresh();                                                          // 更新(Refresh)容器內的影像內容
+                                break;
+
+                            case "Reselected":
+                                myPen = new Pen(colorDialog1.Color, int.Parse(toolStripComboBox1.Text));    // 宣告新畫筆(new Pen)，顏色來自colorDialog1的Color屬性，筆的粗細來自下拉選單(toolStripComboBox1)的文字
+
+                                myGraphics.DrawRectangle(myPen, FirstPointX, FirstPointY, e.X, e.Y);        // 繪圖物件graphics畫一個方形(DrawRectangle)，使用上述之新畫筆，位置為滑鼠點擊(e.X,e.Y)位置，大小50x50
+
+                                panDraw.Refresh();                                                          // 更新(Refresh)容器內的影像內容
+                                break;
+                        }
+                    }
+
+                }
             }
             catch(Exception ex)
             {
@@ -133,7 +143,7 @@ namespace OlisWork
         }
 
 
-        // 右鍵菜單點方形時
+        // 右鍵菜點擊方形時
         private void tspMenu_Rect_Click(object sender, EventArgs e)
         {
             select = "Reselected";                                             // 設一個Reselected能做判斷
