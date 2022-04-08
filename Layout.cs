@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OlisWork
 {
-    public partial class Form4 : Form
+    public partial class Layout : Form
     {
-        public Form4()
+        public Layout()
         {
             InitializeComponent();
         }

@@ -8,39 +8,45 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using WindowsFormsApp1;
 
 namespace OlisWork
 {
-    public partial class Form6 : Form
+    public partial class Txt : Form
     {
-        string txt_FilePath = "";                          // 用來記錄當前開啟檔案路徑
-        public Form6()
+        string txt_FilePath = "";                                              // 用來記錄當前開啟檔案路徑
+
+
+        public Txt()
         {
             InitializeComponent();
         }
 
-        private void buttonWrite_Click(object sender, EventArgs e)
+
+        // 寫入Txt文件
+        private void btnWrite_Click(object sender, EventArgs e)
         {
             FileStream fileStream = null;
+
             try
             {
-                if (fileStream == null)                                            // 判斷有無資料夾
+                if (fileStream == null)                                        // 判斷有無資料夾
                 {
-                    if (txt_FilePath == "")                                        // 判斷資料夾內有無資料
+                    if (txt_FilePath == "")                                    // 判斷資料夾內有無資料
                     {
                         SaveFileDialog saveFileDialog = new SaveFileDialog();
                         saveFileDialog.Filter = "文字檔案(*.txt)|*.txt";
                         if (saveFileDialog.ShowDialog() == DialogResult.OK)
                         {
-                            txt_FilePath = saveFileDialog.FileName; // 創一個檔案
+                            txt_FilePath = saveFileDialog.FileName;            // 創一個檔案
                             fileStream = new FileStream(txt_FilePath, FileMode.Create);
                             fileStream.Close();
 
                             // * 寫入檔案的方法 *
-                            //using (StreamWriter sw = File.AppendText(txt_FilePath))            // using引用，只能在{}裡，處理完就會自動消失，不需Close他 / Append方法將資料存至最後方，使用Systeam.Writer方法會覆寫
+                            //using (StreamWriter sw = File.AppendText(txt_FilePath))              // using引用，只能在{}裡，處理完就會自動消失，不需Close他 / Append方法將資料存至最後方，使用Systeam.Writer方法會覆寫
                             //{
                             //    sw.Write(textBoxWrite.Text);
-                            //    sw.Write(Environment.NewLine);                                 // 換行
+                            //    sw.Write(Environment.NewLine);                                   // 換行
                             //}
                             //using (StreamWriter sw = new StreamWriter(txt_FilePath, true))       // 一開始輸入內容
                             //{
@@ -52,7 +58,7 @@ namespace OlisWork
                             MessageBox.Show("請開啟txt檔案");
                         }
                     }
-                    string text = textBoxWrite.Text;
+                    string text = txtWrite.Text;
                     string read = "";
                     using (StreamReader sr = new StreamReader(txt_FilePath))
                     {
@@ -60,46 +66,47 @@ namespace OlisWork
                     }
                     File.WriteAllText(txt_FilePath, text + Environment.NewLine + read);
 
-                    ReadTxt();
+                    readTxt();                                                 // 讀取Txt
 
                     MessageBox.Show("Gooddddddddddddddddd !");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                WriteLog.WriteLogg(ex, "Txt寫入", "");
             }
         }
 
+
         // 在TextBox_Read下讀取檔案的文字內容
-        void ReadTxt()
+        void readTxt()
         {
             string line;
 
             try
             {
-                if (textBoxRead.Text.Length != 0)                                  // 判斷裡面有幾個字元，用做判斷有無資料
+                if (txtRead.Text.Length != 0)                                  // 判斷裡面有幾個字元，用做判斷有無資料
                 {
-                    textBoxRead.Text = "";
+                    txtRead.Text = "";
                 }
-                StreamReader sr = new StreamReader(txt_FilePath);                // StreamReader 逐行讀取文字內容，根據自訂存檔的那個檔案路徑
-                while ((line = sr.ReadLine()) != null)                           // 當檔案內文字的行不=NULL時，逐行往下去讀取
+                StreamReader sr = new StreamReader(txt_FilePath);              // StreamReader 逐行讀取文字內容，根據自訂存檔的那個檔案路徑
+                while ((line = sr.ReadLine()) != null)                         // 當檔案內文字的行不=NULL時，逐行往下去讀取
                 {
-                    textBoxRead.Text += line + Environment.NewLine;              // 寫入至TextBox_Read上
+                    txtRead.Text += line + Environment.NewLine;                // 寫入至TextBox_Read上
                 }
                 sr.Close();
 
                 // * Read讀取反轉 *
-                //string[] lines = File.ReadAllLines(txt_FilePath);                  // File.ReadAllLines()方法逐行讀取文字檔案，ReadAllLines()是傳回一個字串陣列
-                //Array.Reverse(lines);                                              // 反轉陣列Array
-                //for(int i = 0; i <= lines.Length - 1; i++)                         // Length -1 是陣列時使用，字串不用
+                //string[] lines = File.ReadAllLines(txt_FilePath);            // File.ReadAllLines()方法逐行讀取文字檔案，ReadAllLines()是傳回一個字串陣列
+                //Array.Reverse(lines);                                        // 反轉陣列Array
+                //for(int i = 0; i <= lines.Length - 1; i++)                   // Length -1 是陣列時使用，字串不用
                 //{
                 //    textBoxRead.Text += lines[i] + Environment.NewLine;
                 //}
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                WriteLog.WriteLogg(ex, "Txt讀取", "");
             }
         }
     }

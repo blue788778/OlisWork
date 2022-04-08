@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class Form6_Json
+    partial class Json
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn = new System.Windows.Forms.Button();
             this.textBoxJWrite = new System.Windows.Forms.TextBox();
             this.textBoxJRead = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btn
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(800, 450);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "寫入";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn.Location = new System.Drawing.Point(0, 0);
+            this.btn.Name = "btn";
+            this.btn.Size = new System.Drawing.Size(800, 450);
+            this.btn.TabIndex = 0;
+            this.btn.Text = "寫入";
+            this.btn.UseVisualStyleBackColor = true;
+            this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // textBoxJWrite
             // 
@@ -85,7 +85,7 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "讀取JSON";
             // 
-            // Form6_Json
+            // Json
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,8 +94,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxJRead);
             this.Controls.Add(this.textBoxJWrite);
-            this.Controls.Add(this.button1);
-            this.Name = "Form6_Json";
+            this.Controls.Add(this.btn);
+            this.Name = "Json";
             this.Text = "Form6_Json";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn;
         private System.Windows.Forms.TextBox textBoxJWrite;
         private System.Windows.Forms.TextBox textBoxJRead;
         private System.Windows.Forms.Label label1;

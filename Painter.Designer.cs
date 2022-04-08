@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class Form1
+    partial class Painter
     {
         /// <summary>
         /// 設計工具所需的變數。
@@ -29,44 +29,44 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.drawPanel = new System.Windows.Forms.PictureBox();
-            this.menuItem = new System.Windows.Forms.MenuStrip();
+            this.panDraw = new System.Windows.Forms.PictureBox();
+            this.menu = new System.Windows.Forms.MenuStrip();
             this.setMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.setMenu_PenColor = new System.Windows.Forms.ToolStripMenuItem();
             this.setMenu_PenSize = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.contextMenuStrip_Circle = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ctms_Circle = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItem_Round = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_Rect = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.drawPanel)).BeginInit();
-            this.menuItem.SuspendLayout();
-            this.contextMenuStrip_Circle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panDraw)).BeginInit();
+            this.menu.SuspendLayout();
+            this.ctms_Circle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // drawPanel
+            // panDraw
             // 
-            this.drawPanel.BackColor = System.Drawing.Color.White;
-            this.drawPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.drawPanel.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.drawPanel.Location = new System.Drawing.Point(0, 0);
-            this.drawPanel.Name = "drawPanel";
-            this.drawPanel.Size = new System.Drawing.Size(799, 451);
-            this.drawPanel.TabIndex = 0;
-            this.drawPanel.TabStop = false;
-            this.drawPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draw_FirstPoint_Down);
-            this.drawPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draw_ToNewPoint_Move);
-            this.drawPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MenuCircle_Up);
+            this.panDraw.BackColor = System.Drawing.Color.White;
+            this.panDraw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panDraw.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.panDraw.Location = new System.Drawing.Point(0, 0);
+            this.panDraw.Name = "panDraw";
+            this.panDraw.Size = new System.Drawing.Size(799, 451);
+            this.panDraw.TabIndex = 0;
+            this.panDraw.TabStop = false;
+            this.panDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panDraw_firstpoint_Down);
+            this.panDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panDraw_tonewpoint_Move);
+            this.panDraw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.menuCircle_Up);
             // 
-            // menuItem
+            // menu
             // 
-            this.menuItem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setMenu});
-            this.menuItem.Location = new System.Drawing.Point(0, 0);
-            this.menuItem.Name = "menuItem";
-            this.menuItem.Size = new System.Drawing.Size(800, 24);
-            this.menuItem.TabIndex = 1;
-            this.menuItem.Text = "menuItem";
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(800, 24);
+            this.menu.TabIndex = 1;
+            this.menu.Text = "menuItem";
             // 
             // setMenu
             // 
@@ -109,44 +109,44 @@
             this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
             this.toolStripComboBox1.Text = "1";
             // 
-            // contextMenuStrip_Circle
+            // ctms_Circle
             // 
-            this.contextMenuStrip_Circle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctms_Circle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_Round,
             this.ToolStripMenuItem_Rect});
-            this.contextMenuStrip_Circle.Name = "contextMenuStrip_Circle";
-            this.contextMenuStrip_Circle.Size = new System.Drawing.Size(181, 70);
+            this.ctms_Circle.Name = "contextMenuStrip_Circle";
+            this.ctms_Circle.Size = new System.Drawing.Size(99, 48);
             // 
             // ToolStripMenuItem_Round
             // 
             this.ToolStripMenuItem_Round.Name = "ToolStripMenuItem_Round";
-            this.ToolStripMenuItem_Round.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Round.Size = new System.Drawing.Size(98, 22);
             this.ToolStripMenuItem_Round.Text = "圓形";
-            this.ToolStripMenuItem_Round.Click += new System.EventHandler(this.ToolStripMenuItem_Round_Click);
-            this.ToolStripMenuItem_Round.MouseUp += new System.Windows.Forms.MouseEventHandler(this.MenuCircle_Up);
+            this.ToolStripMenuItem_Round.Click += new System.EventHandler(this.tspMenu_Round_Click);
+            this.ToolStripMenuItem_Round.MouseUp += new System.Windows.Forms.MouseEventHandler(this.menuCircle_Up);
             // 
             // ToolStripMenuItem_Rect
             // 
             this.ToolStripMenuItem_Rect.Name = "ToolStripMenuItem_Rect";
-            this.ToolStripMenuItem_Rect.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItem_Rect.Size = new System.Drawing.Size(98, 22);
             this.ToolStripMenuItem_Rect.Text = "方形";
-            this.ToolStripMenuItem_Rect.Click += new System.EventHandler(this.ToolStripMenuItem_Rect_Click);
+            this.ToolStripMenuItem_Rect.Click += new System.EventHandler(this.tspMenu_Rect_Click);
             // 
-            // Form1
+            // Painter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.menuItem);
-            this.Controls.Add(this.drawPanel);
-            this.Name = "Form1";
+            this.Controls.Add(this.menu);
+            this.Controls.Add(this.panDraw);
+            this.Name = "Painter";
             this.Text = "Form1";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draw_FirstPoint_Down);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draw_ToNewPoint_Move);
-            ((System.ComponentModel.ISupportInitialize)(this.drawPanel)).EndInit();
-            this.menuItem.ResumeLayout(false);
-            this.menuItem.PerformLayout();
-            this.contextMenuStrip_Circle.ResumeLayout(false);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panDraw_firstpoint_Down);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panDraw_tonewpoint_Move);
+            ((System.ComponentModel.ISupportInitialize)(this.panDraw)).EndInit();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
+            this.ctms_Circle.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,14 +154,14 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox drawPanel;
-        private System.Windows.Forms.MenuStrip menuItem;
+        private System.Windows.Forms.PictureBox panDraw;
+        private System.Windows.Forms.MenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem setMenu;
         private System.Windows.Forms.ToolStripMenuItem setMenu_PenColor;
         private System.Windows.Forms.ToolStripMenuItem setMenu_PenSize;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Circle;
+        private System.Windows.Forms.ContextMenuStrip ctms_Circle;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Round;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Rect;
     }
