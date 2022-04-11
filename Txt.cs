@@ -14,7 +14,10 @@ namespace OlisWork
 {
     public partial class Txt : Form
     {
-        string txt_FilePath = "";                                              // 用來記錄當前開啟檔案路徑
+        string TxtFilePath;                                                    // 用來記錄當前開啟檔案路徑
+        string TextLline;
+        string MyText;
+        string MyRead;
 
 
         public Txt()
@@ -32,14 +35,14 @@ namespace OlisWork
             {
                 if (fileStream == null)                                        // 判斷有無資料夾
                 {
-                    if (txt_FilePath == "")                                    // 判斷資料夾內有無資料
+                    if (TxtFilePath == "")                                     // 判斷資料夾內有無資料
                     {
                         SaveFileDialog saveFileDialog = new SaveFileDialog();
                         saveFileDialog.Filter = "文字檔案(*.txt)|*.txt";
                         if (saveFileDialog.ShowDialog() == DialogResult.OK)
                         {
-                            txt_FilePath = saveFileDialog.FileName;            // 創一個檔案
-                            fileStream = new FileStream(txt_FilePath, FileMode.Create);
+                            TxtFilePath = saveFileDialog.FileName;             // 創一個檔案
+                            fileStream = new FileStream(TxtFilePath, FileMode.Create);
                             fileStream.Close();
 
                             // * 寫入檔案的方法 *
@@ -58,22 +61,25 @@ namespace OlisWork
                             MessageBox.Show("請開啟txt檔案");
                         }
                     }
-                    string text = txtWrite.Text;
-                    string read = "";
-                    using (StreamReader sr = new StreamReader(txt_FilePath))
-                    {
-                        read = sr.ReadToEnd();
-                    }
-                    File.WriteAllText(txt_FilePath, text + Environment.NewLine + read);
 
-                    readTxt();                                                 // 讀取Txt
+                    MyText = txtWrite.Text;
+                    MyRead = "";
+
+                    using (StreamReader sr = new StreamReader(TxtFilePath))
+                    {
+                        MyRead = sr.ReadToEnd();
+                    }
+                    File.WriteAllText(TxtFilePath, MyText + Environment.NewLine + MyRead);
+
+                    // 讀取Txt
+                    readTxt();
 
                     MessageBox.Show("Gooddddddddddddddddd !");
                 }
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "Txt寫入", "");
+                WriteLog.WriteLogg(ex, "btnWrite_Click() Txt寫入錯誤");
             }
         }
 
@@ -81,18 +87,16 @@ namespace OlisWork
         // 在TextBox_Read下讀取檔案的文字內容
         void readTxt()
         {
-            string line;
-
             try
             {
                 if (txtRead.Text.Length != 0)                                  // 判斷裡面有幾個字元，用做判斷有無資料
                 {
                     txtRead.Text = "";
                 }
-                StreamReader sr = new StreamReader(txt_FilePath);              // StreamReader 逐行讀取文字內容，根據自訂存檔的那個檔案路徑
-                while ((line = sr.ReadLine()) != null)                         // 當檔案內文字的行不=NULL時，逐行往下去讀取
+                StreamReader sr = new StreamReader(TxtFilePath);               // StreamReader 逐行讀取文字內容，根據自訂存檔的那個檔案路徑
+                while ((TextLline = sr.ReadLine()) != null)                         // 當檔案內文字的行不=NULL時，逐行往下去讀取
                 {
-                    txtRead.Text += line + Environment.NewLine;                // 寫入至TextBox_Read上
+                    txtRead.Text += TextLline + Environment.NewLine;                // 寫入至TextBox_Read上
                 }
                 sr.Close();
 
@@ -106,7 +110,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "Txt讀取", "");
+                WriteLog.WriteLogg(ex, "readTxt() Txt讀取錯誤");
             }
         }
     }

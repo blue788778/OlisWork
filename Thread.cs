@@ -32,7 +32,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "開始執行緒", "");
+                WriteLog.WriteLogg(ex, "btn_Click() 開始執行緒錯誤");
             }
         }
 

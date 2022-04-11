@@ -25,8 +25,8 @@ namespace OlisWork
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Panel myPan = new Panel();
-            Button myBtn = new Button();
             Label myLbl = new Label();
+            Button myBtn = new Button();
 
             try
             {
@@ -61,24 +61,27 @@ namespace OlisWork
                 }
                 Counter++;
 
-                // 滾輪滑動
-                this.panShow.AutoScroll = true;
-                Point newPoint = new Point(0, this.panShow.Height - panShow.AutoScrollPosition.Y);
-                this.panShow.AutoScrollPosition = newPoint;
+                //// 滾輪滑動
+                //this.panShow.AutoScroll = true;
+                //Point newPoint = new Point(0, this.panShow.Height - panShow.AutoScrollPosition.Y);
+                //this.panShow.AutoScrollPosition = newPoint;
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "動態產生", "");
+                WriteLog.WriteLogg(ex, "btnAdd_Click() 動態產生錯誤");
             }
         }
+
 
         // 產生動態產生的Button事件
         private void dynamic_btn_Click(object sender, EventArgs e)
         {
             try
             {
-                Button button = (Button)sender;                                // 內部轉換方法
-                string btnSplit = button.Text.Split('_')[1];                   // 分割成陣列 button_1, 條件用 ('_'), ["button" , "1"]
+                // 內部轉換方法
+                Button button = (Button)sender;
+                // 分割成陣列 button_1, 條件用 ('_'), ["button" , "1"]
+                string btnSplit = button.Text.Split('_')[1];
 
                 // 在預設的Panel上產生物件的Item
                 foreach (Control item in panShow.Controls)
@@ -99,7 +102,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "產生動態產生事件", "");
+                WriteLog.WriteLogg(ex, "dynamic_btn_Click() 產生動態產生事件錯誤");
             }
         }
     }

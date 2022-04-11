@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn = new System.Windows.Forms.Button();
+            this.btnWrite = new System.Windows.Forms.Button();
             this.txtWrite = new System.Windows.Forms.TextBox();
             this.txtRead = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // btn
+            // btnWrite
             // 
-            this.btn.Location = new System.Drawing.Point(44, 55);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(75, 23);
-            this.btn.TabIndex = 0;
-            this.btn.Text = "button1";
-            this.btn.UseVisualStyleBackColor = true;
-            this.btn.Click += new System.EventHandler(this.btn_Click);
+            this.btnWrite.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnWrite.Location = new System.Drawing.Point(44, 55);
+            this.btnWrite.Name = "btnWrite";
+            this.btnWrite.Size = new System.Drawing.Size(75, 23);
+            this.btnWrite.TabIndex = 0;
+            this.btnWrite.Text = "寫入Xml";
+            this.btnWrite.UseVisualStyleBackColor = true;
+            this.btnWrite.Click += new System.EventHandler(this.btn_Click);
             // 
             // txtWrite
             // 
@@ -67,7 +68,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txtRead);
             this.Controls.Add(this.txtWrite);
-            this.Controls.Add(this.btn);
+            this.Controls.Add(this.btnWrite);
             this.Name = "Xml";
             this.Text = "Form6_XML";
             this.ResumeLayout(false);
@@ -77,7 +78,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.Button btnWrite;
         private System.Windows.Forms.TextBox txtWrite;
         private System.Windows.Forms.TextBox txtRead;
     }

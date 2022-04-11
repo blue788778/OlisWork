@@ -19,10 +19,12 @@ namespace OlisWork
         string path = @"C:\Users\Oli\Desktop\1.json";
         string JsonFile;
 
+
         public Json()
         {
             InitializeComponent();
         }
+
 
         // JSON Name class
         public class NameJ
@@ -41,16 +43,22 @@ namespace OlisWork
             {
                 NameJ nameJ = new NameJ()
                 {
-                    Name = textBoxJWrite.Text,
+                    Name = txtJWrite.Text,
                 };
-                var name = JObject.FromObject(nameJ);                          // JObject用來操作JSON物件，FromObject(nameJ)是要轉化的對象，返回一個JObject物件
 
+                var name = JObject.FromObject(nameJ);                          // JObject用來操作JSON物件，FromObject(nameJ)是要轉化的對象，返回一個JObject物件
                 string output = JsonConvert.SerializeObject(name);             // 序列化
-                File.WriteAllText(path, JsonFile + $"[{ "," + "\r\n" + output}]");
+
+                File.WriteAllText(path, $"[{txtJRead.Text+ output}]");
+
+                txtJWrite.Text = "";                                           // 清空資料
+
+                // 讀取資料
+                read();
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "寫入JSON", "");
+                WriteLog.WriteLogg(ex, "write() 寫入JSON錯誤", "");
             }
         }
 
@@ -58,39 +66,39 @@ namespace OlisWork
         // 從JSON檔案中讀取
         public void read()
         {
-            textBoxJRead.Text = "";
+            txtJRead.Text = "";
 
             try
             {
-                JsonFile = File.ReadAllText(path);
-
-                //List<NameJ> NameJ = JsonConvert.DeserializeObject<List<NameJ>>(jsonFile);
-
-                //NameJ nameJ = new NameJ();
-
-                //for (int i = 0; i <= NameJ.Count - 1; i++)
-                //{
-                //    textBoxJRead.Text += NameJ[i].Name.ToString() + Environment.NewLine;
-                //}
-
-                JArray jsonarray = JArray.Parse(JsonFile);                     // JArry是JSON的陣列
-
-                // JsonArray陣列中有無資料
-                for (int i = 0; i <= jsonarray.Count - 1; i++)                 // 查看陣列中有無資料
+                if (path != null)
                 {
-                    textBoxJRead.Text += jsonarray[i].ToString() + "," + "\r\n";
+                    JsonFile = File.ReadAllText(path);
+
+                    JArray jsonarray = JArray.Parse(JsonFile);                     // JArry是JSON的陣列
+                    // JsonArray陣列中有無資料
+                    for (int i = 0; i <= jsonarray.Count - 1; i++)
+                    {
+                        txtJRead.Text += jsonarray[i].ToString() + "," + "\r\n";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Create");
                 }
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "讀取JSON", "");
+                WriteLog.WriteLogg(ex, "read() 讀取JSON錯誤", "");
             }
         }
 
+
+        // 按鈕寫入讀取
         private void btn_Click(object sender, EventArgs e)
         {
             // 讀取JSON文件
             read();
+
             // 寫入JSON文件
             write();
         }

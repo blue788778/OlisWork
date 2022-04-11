@@ -44,6 +44,7 @@
             // 
             // panShow
             // 
+            this.panShow.AutoSize = true;
             this.panShow.Location = new System.Drawing.Point(46, 108);
             this.panShow.Name = "panShow";
             this.panShow.Size = new System.Drawing.Size(704, 305);
@@ -59,6 +60,7 @@
             this.Name = "DynamicNew";
             this.Text = "Form3";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

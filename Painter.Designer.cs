@@ -37,8 +37,9 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.ctms_Circle = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItem_Round = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_Rect = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspMenuRound = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspMenuRect = new System.Windows.Forms.ToolStripMenuItem();
+            this.tspMenuLine = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.panDraw)).BeginInit();
             this.menu.SuspendLayout();
             this.ctms_Circle.SuspendLayout();
@@ -56,7 +57,7 @@
             this.panDraw.TabStop = false;
             this.panDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panDraw_firstpoint_Down);
             this.panDraw.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panDraw_tonewpoint_Move);
-            this.panDraw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.menuCircle_Up);
+            this.panDraw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.menuShape_Up);
             // 
             // menu
             // 
@@ -112,25 +113,32 @@
             // ctms_Circle
             // 
             this.ctms_Circle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_Round,
-            this.ToolStripMenuItem_Rect});
+            this.tspMenuRound,
+            this.tspMenuRect,
+            this.tspMenuLine});
             this.ctms_Circle.Name = "contextMenuStrip_Circle";
-            this.ctms_Circle.Size = new System.Drawing.Size(99, 48);
+            this.ctms_Circle.Size = new System.Drawing.Size(181, 92);
             // 
-            // ToolStripMenuItem_Round
+            // tspMenuRound
             // 
-            this.ToolStripMenuItem_Round.Name = "ToolStripMenuItem_Round";
-            this.ToolStripMenuItem_Round.Size = new System.Drawing.Size(98, 22);
-            this.ToolStripMenuItem_Round.Text = "圓形";
-            this.ToolStripMenuItem_Round.Click += new System.EventHandler(this.tspMenu_Round_Click);
-            this.ToolStripMenuItem_Round.MouseUp += new System.Windows.Forms.MouseEventHandler(this.menuCircle_Up);
+            this.tspMenuRound.Name = "tspMenuRound";
+            this.tspMenuRound.Size = new System.Drawing.Size(188, 22);
+            this.tspMenuRound.Text = "圓形";
+            this.tspMenuRound.Click += new System.EventHandler(this.tspMenu_Round_Click);
             // 
-            // ToolStripMenuItem_Rect
+            // tspMenuRect
             // 
-            this.ToolStripMenuItem_Rect.Name = "ToolStripMenuItem_Rect";
-            this.ToolStripMenuItem_Rect.Size = new System.Drawing.Size(98, 22);
-            this.ToolStripMenuItem_Rect.Text = "方形";
-            this.ToolStripMenuItem_Rect.Click += new System.EventHandler(this.tspMenu_Rect_Click);
+            this.tspMenuRect.Name = "tspMenuRect";
+            this.tspMenuRect.Size = new System.Drawing.Size(188, 22);
+            this.tspMenuRect.Text = "方形";
+            this.tspMenuRect.Click += new System.EventHandler(this.tspMenu_Rect_Click);
+            // 
+            // tspMenuLine
+            // 
+            this.tspMenuLine.Name = "tspMenuLine";
+            this.tspMenuLine.Size = new System.Drawing.Size(180, 22);
+            this.tspMenuLine.Text = "線條";
+            this.tspMenuLine.Click += new System.EventHandler(this.tspMenuLine_Click);
             // 
             // Painter
             // 
@@ -162,8 +170,9 @@
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.ContextMenuStrip ctms_Circle;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Round;
-        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_Rect;
+        private System.Windows.Forms.ToolStripMenuItem tspMenuRound;
+        private System.Windows.Forms.ToolStripMenuItem tspMenuRect;
+        private System.Windows.Forms.ToolStripMenuItem tspMenuLine;
     }
 }
 

@@ -22,7 +22,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "開啟網址", "");
+                WriteLog.WriteLogg(ex, "ThreadBrowse() 開啟網址錯誤");
             }
         }
 
@@ -37,10 +37,12 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "前往網址", "");
+                WriteLog.WriteLogg(ex, "open() 前往網址錯誤");
             }
         }
 
+
+        // 關閉執行緒
         private void ThreadBrowse_FormClosed(object sender, FormClosedEventArgs e)
         {
             webBrowser.Dispose();

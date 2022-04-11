@@ -15,16 +15,18 @@ namespace OlisWork
 {
     public partial class Xml : Form
     {
+        XmlDocument Document = new XmlDocument();
+        string Xml_FilePath = @"C:/Users/Oli/Desktop/test.xml";
+        string MyText;
+
+
         public Xml()
         {
             InitializeComponent();
         }
-        
-        XmlDocument Document = new XmlDocument();
-        string Xml_FilePath = @"C:/Users/Oli/Desktop/test.xml";
 
 
-        // 按鈕事件
+        // 按鈕寫入讀取
         private void btn_Click(object sender, EventArgs e)
         { 
             // 寫進XML文件
@@ -51,8 +53,6 @@ namespace OlisWork
                     XmlElement element = Document.CreateElement("Name");
                     element.InnerText = txtWrite.Text;
                     node.AppendChild(element);
-
-                    // 生成子節點
                     XmlElement element2 = Document.CreateElement("Age");
                     element2.InnerText = txtWrite.Text;
                     node.AppendChild(element2);
@@ -67,7 +67,7 @@ namespace OlisWork
                     // SelectSingleNode尋找節點
                     XmlNode node = Document.SelectSingleNode("test");
 
-                    //建立小節點
+                    // 生成小節點
                     XmlElement Name = Document.CreateElement("Name");
                     Name.InnerText = txtWrite.Text;
                     node.AppendChild(Name);
@@ -84,7 +84,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "Xml寫入", "");
+                WriteLog.WriteLogg(ex, "write() Xml寫入錯誤");
             }
         }
 
@@ -92,13 +92,11 @@ namespace OlisWork
         // 讀取XML檔案
         public void read()
         {
-            string text;
-
             try
             {
                 XmlReader reader = XmlReader.Create(Xml_FilePath);
                 {
-                    // BOOL值，確認文件是否包含XML
+                    // Bool值，確認文件是否包含XML
                     while (reader.Read())
                     {
                         // 檢查文件中是否有任何起始元素
@@ -108,12 +106,12 @@ namespace OlisWork
                             switch (reader.Name.ToString())
                             {
                                 case "Name":
-                                    text = reader.ReadString();
-                                    txtRead.Text += text + Environment.NewLine;
+                                    MyText = reader.ReadString();
+                                    txtRead.Text += MyText + Environment.NewLine;
                                     break;
                                 case "Age":
-                                    text = reader.ReadString();
-                                    txtRead.Text += text + Environment.NewLine;
+                                    MyText = reader.ReadString();
+                                    txtRead.Text += MyText + Environment.NewLine;
                                     break;
                             }
                         }
@@ -121,11 +119,12 @@ namespace OlisWork
                 }
                 // 清除Document
                 Document.Clone();
+                // 清除reader
                 reader.Close();
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "Xml讀取", "");
+                WriteLog.WriteLogg(ex, "read() Xml讀取錯誤");
             }
         }
     }

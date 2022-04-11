@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
     {
         public static void WriteLogg(Exception ex, string wrong = "", string LogAddress = "")
         {
-            //如果日誌檔案為空，則預設在Debug目錄下新建 YYYY-mm-dd_Log.log檔案
+            // 如果日誌檔案為空，則預設在Debug目錄下新建 YYYY-mm-dd_Log.log檔案
             if (LogAddress == "")
             {
                 LogAddress = Environment.CurrentDirectory + '\\' +
@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
             }
 
 
-            //把異常資訊輸出到檔案
+            // 把異常資訊輸出到檔案
             StreamWriter fs = new StreamWriter(LogAddress, true);
             fs.WriteLine(wrong.ToString());
             fs.WriteLine("當前時間：" + DateTime.Now.ToString());
@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
             fs.WriteLine("異常物件：" + ex.Source);
             fs.WriteLine("呼叫堆疊：\n" + ex.StackTrace.Trim());
             fs.WriteLine("觸發方法：" + ex.TargetSite);
-            fs.WriteLine("---------------------------------------------------------------------");
+            fs.WriteLine("--------------------------------------------------------------------------------");
             fs.WriteLine();
             fs.Close();
         }

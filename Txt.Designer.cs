@@ -42,7 +42,7 @@
             this.btnWrite.Name = "btnWrite";
             this.btnWrite.Size = new System.Drawing.Size(75, 450);
             this.btnWrite.TabIndex = 0;
-            this.btnWrite.Text = "寫入";
+            this.btnWrite.Text = "寫入TXT";
             this.btnWrite.UseVisualStyleBackColor = true;
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
@@ -81,7 +81,7 @@
             this.lblRead.TabIndex = 4;
             this.lblRead.Text = "讀取文字";
             // 
-            // Form6
+            // Txt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,8 +91,7 @@
             this.Controls.Add(this.txtRead);
             this.Controls.Add(this.txtWrite);
             this.Controls.Add(this.btnWrite);
-            this.Name = "Form6";
-            this.Text = "Form6";
+            this.Name = "Txt";
             this.ResumeLayout(false);
             this.PerformLayout();
 

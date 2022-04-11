@@ -10,8 +10,9 @@ namespace OlisWork
     public partial class DataCURD : Form
     {
         SqlConnection con = new SqlConnection("Data Source=PC-OLI;Initial Catalog=WorkDataControl_Student;Integrated Security=True");
-        int Mar = 0;
-        int StuId ;
+        int Mar;
+        int StuId;
+        
 
         public DataCURD()
         {
@@ -26,7 +27,7 @@ namespace OlisWork
         }
 
 
-        // 在更新資料後也跟著更新畫面上資料
+        // 顯示資料，在更新資料後也跟著更新畫面上資料
         public void load_Update()
         {
             try
@@ -35,13 +36,14 @@ namespace OlisWork
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Student", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 con.Close();
+
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dgvShow.DataSource = dt;
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "刷新畫面資料", "");
+                WriteLog.WriteLogg(ex, "load_Update() 連接DB顯示資料錯誤");
             }
         }
 
@@ -62,7 +64,7 @@ namespace OlisWork
                     // 判斷學號欄位是否為數字
                     if(int.TryParse(txtStuID.Text, out StuId) == true)
                     {
-                        string insert_data = $"INSERT INTO Student VALUES ({txtStuID.Text},{txtName.Text} ,{cboGrade.Text}, {Mar})";          // 使用到SqlCURD
+                        string insert_data = $"INSERT INTO Student VALUES ({txtStuID.Text}, {txtName.Text}, {cboGrade.Text}, {Mar})";          // 使用到SqlCURD
 
                         new SqlCURD(insert_data);
 
@@ -83,7 +85,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "新增資料", "");
+                WriteLog.WriteLogg(ex, "btnAdd_Click() 新增資料錯誤");
             }
         }
 
@@ -104,8 +106,8 @@ namespace OlisWork
                         cmd.Parameters.AddWithValue("@StuID", int.Parse(txtStuID.Text));
                         cmd.ExecuteNonQuery();
                         con.Close();
-                        MessageBox.Show("Nice!");
 
+                        MessageBox.Show("Nice!");
                         // 刪除後更新畫面上資料
                         load_Update();
                     }
@@ -121,7 +123,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "刪除資料", "");
+                WriteLog.WriteLogg(ex, "btnDelete_Click() 刪除資料錯誤");
             }
             con.Close();
         }
@@ -141,17 +143,15 @@ namespace OlisWork
                 try
                 {
                     string edit_data = $"UPDATE Student SET Name = '{txtName.Text}', Grade = '{cboGrade.SelectedItem}', Married = '{Mar}' WHERE StuID = '{txtStuID.Text}'";
-
                     new SqlCURD(edit_data);
 
                     MessageBox.Show("Bravo!");
-
                     // 編輯後更新畫面上資料
                     load_Update();
                 }
                 catch (Exception ex)
                 {
-                    WriteLog.WriteLogg(ex, "編輯資料", "");
+                    WriteLog.WriteLogg(ex, "btnEdit_Click() 編輯資料錯誤");
                 }
             }
         }
@@ -168,18 +168,27 @@ namespace OlisWork
                     // 判斷有無輸入學號
                     if(txtStuID.TextLength != 0)
                     {
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand($"SELECT * FROM Student WHERE StuID = '{txtStuID.Text}'", con);
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        con.Close();
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count != 0)
+                        // 判斷學號欄位是否為數字
+                        if (int.TryParse(txtStuID.Text, out StuId) == true)
                         {
-                            txtName.Text = dt.Rows[0][1].ToString();
-                            cboGrade.Text = dt.Rows[0][2].ToString();
-                            chkMarried.Checked = Boolean.Parse(dt.Rows[0][3].ToString());
+                            con.Open();
+                            SqlCommand cmd = new SqlCommand($"SELECT * FROM Student WHERE StuID = '{txtStuID.Text}'", con);
+                            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                            con.Close();
+
+                            DataTable dt = new DataTable();
+                            da.Fill(dt);
+
+                            if (dt.Rows.Count != 0)
+                            {
+                                txtName.Text = dt.Rows[0][1].ToString();
+                                cboGrade.Text = dt.Rows[0][2].ToString();
+                                chkMarried.Checked = Boolean.Parse(dt.Rows[0][3].ToString());
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("檢查學號");
                         }
                     }
                     else
@@ -189,7 +198,7 @@ namespace OlisWork
                 }
                 catch (Exception ex)
                 {
-                    WriteLog.WriteLogg(ex, "搜尋資料", "");
+                    WriteLog.WriteLogg(ex, "txt_StuID_KeyDown() 搜尋資料錯誤");
                 }
             }
         }

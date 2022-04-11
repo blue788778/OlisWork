@@ -38,21 +38,28 @@ namespace OlisWork
                 //int a = 1;
                 //int b = a / 0;
 
-                VideoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-                VideoSource = new VideoCaptureDevice(VideoDevices[SelectedDeviceIndex].MonikerString);       // 連接鏡頭，使用預設本機的鏡頭
-                VideoSource.VideoResolution = VideoSource.VideoCapabilities[SelectedDeviceIndex];            // 解析度，使用預設本機鏡頭的解析度
-                vspShow.VideoSource = VideoSource;
-
-                // 將本機鏡頭支援的解析度加入至ComBox的選項
-                for (int i = 0; i < VideoSource.VideoCapabilities.Length; i++)
+                if(VideoDevices != null)
                 {
-                    string resolution_size = VideoSource.VideoCapabilities[i].FrameSize.ToString();
-                    cboResolution.Items.Add(resolution_size);
+                    VideoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                    VideoSource = new VideoCaptureDevice(VideoDevices[SelectedDeviceIndex].MonikerString);       // 連接鏡頭，使用預設本機的鏡頭
+                    VideoSource.VideoResolution = VideoSource.VideoCapabilities[SelectedDeviceIndex];            // 解析度，使用預設本機鏡頭的解析度
+                    vspShow.VideoSource = VideoSource;
+
+                    // 將本機鏡頭支援的解析度加入至ComBox的選項
+                    for (int i = 0; i < VideoSource.VideoCapabilities.Length; i++)
+                    {
+                        string resolution_size = VideoSource.VideoCapabilities[i].FrameSize.ToString();
+                        cboResolution.Items.Add(resolution_size);
+                    }
+                }
+                else
+                {
+                    return;
                 }
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex,"視窗預設載入" ,"");
+                WriteLog.WriteLogg(ex, "webCam_Load() 鏡頭資料載入錯誤");
             }
         }
         
@@ -68,7 +75,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "選擇解析度", "");
+                WriteLog.WriteLogg(ex, "cbo_SelectedIndexChanged() 裝置解析度錯誤");
             }
         }
 
@@ -78,11 +85,18 @@ namespace OlisWork
         {
             try
             {
-                vspShow.Start();
+                if(VideoDevices != null)
+                {
+                    vspShow.Start();
+                }
+                else
+                {
+                    MessageBox.Show("本機無鏡頭");
+                }
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "開啟鏡頭", "");
+                WriteLog.WriteLogg(ex, "btn_Open_Click() 開啟鏡頭錯誤");
             }
         }
 
@@ -96,11 +110,13 @@ namespace OlisWork
                 {
                     return;
                 }
+
                 Bitmap bitmap = vspShow.GetCurrentVideoFrame();
                 string fileName = "Work" + DateTime.Now.ToString("yyyy-MM-dd") + ".jpg";           // 自訂檔案預設名字
                 SaveFileDialog saveFileDialog = new SaveFileDialog();                              // 給使用者選取儲存檔案的位置 / SaveFileDialog()-初始化這個類別的新執行個體
                 saveFileDialog.FileName = fileName;                                                // 存檔時檔案名字=檔案預設名字
                 saveFileDialog.Filter = "jpeg (*.jpeg)|*.jpeg";                                    // 預設檔案類型使用JPEG
+
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)                                // ShowDialog()-呼叫對話方塊 / DialogResult.OK-對話方塊的傳回值
                 {
                     bitmap.Save(saveFileDialog.FileName);                                          // 儲存檔案
@@ -109,7 +125,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "儲存檔案", "");
+                WriteLog.WriteLogg(ex, "btn_Pic_Click() 儲存檔案錯誤");
             }
         }
 
@@ -123,7 +139,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "關閉視窗/鏡頭", "");
+                WriteLog.WriteLogg(ex, "webCam_Closed() 關閉視窗/鏡頭錯誤");
             }
         }
     }
