@@ -44,10 +44,6 @@ namespace OlisWork
         {
             try
             {
-                // TEST
-                int a = 1;
-                int b = a / 0;
-
                 if (VideoDevices != null)
                 {
                     VideoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);

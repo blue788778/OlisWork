@@ -67,7 +67,7 @@ namespace OlisWork
                     // SelectSingleNode尋找節點
                     XmlNode node = Document.SelectSingleNode("test");
 
-                    // 生成小節點
+                    // 生成子節點
                     XmlElement nameXml = Document.CreateElement("Name");
                     nameXml.InnerText = txtWrite.Text;
                     node.AppendChild(nameXml);
