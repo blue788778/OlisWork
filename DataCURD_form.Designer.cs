@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dgvShow = new System.Windows.Forms.DataGridView();
-            this.workDataControl_StudentDataSet = new OlisWork.WorkDataControl_StudentDataSet();
-            this.studentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblID = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblGrade = new System.Windows.Forms.Label();
@@ -39,15 +36,10 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.chkMarried = new System.Windows.Forms.CheckBox();
             this.cboGrade = new System.Windows.Forms.ComboBox();
-            this.studentTableAdapter = new OlisWork.WorkDataControl_StudentDataSetTableAdapters.StudentTableAdapter();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.workDataControl_StudentDataSet1 = new OlisWork.WorkDataControl_StudentDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workDataControl_StudentDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workDataControl_StudentDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvShow
@@ -60,16 +52,6 @@
             this.dgvShow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShow.Size = new System.Drawing.Size(485, 232);
             this.dgvShow.TabIndex = 0;
-            // 
-            // workDataControl_StudentDataSet
-            // 
-            this.workDataControl_StudentDataSet.DataSetName = "WorkDataControl_StudentDataSet";
-            this.workDataControl_StudentDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // studentBindingSource
-            // 
-            this.studentBindingSource.DataMember = "Student";
-            this.studentBindingSource.DataSource = this.workDataControl_StudentDataSet;
             // 
             // lblID
             // 
@@ -138,10 +120,6 @@
             this.cboGrade.TabIndex = 8;
             this.cboGrade.Text = "1";
             // 
-            // studentTableAdapter
-            // 
-            this.studentTableAdapter.ClearBeforeFill = true;
-            // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(45, 341);
@@ -172,11 +150,6 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // workDataControl_StudentDataSet1
-            // 
-            this.workDataControl_StudentDataSet1.DataSetName = "WorkDataControl_StudentDataSet";
-            this.workDataControl_StudentDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // DataCURD_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -197,9 +170,6 @@
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.dataCURD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workDataControl_StudentDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workDataControl_StudentDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,8 +178,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvShow;
-        private System.Windows.Forms.BindingSource studentBindingSource;
-        private WorkDataControl_StudentDataSetTableAdapters.StudentTableAdapter studentTableAdapter;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblGrade;
@@ -217,10 +185,8 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.CheckBox chkMarried;
         private System.Windows.Forms.ComboBox cboGrade;
-        private WorkDataControl_StudentDataSet workDataControl_StudentDataSet;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
-        public WorkDataControl_StudentDataSet workDataControl_StudentDataSet1;
     }
 }
