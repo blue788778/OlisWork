@@ -74,11 +74,11 @@
     <Compile Include="Painter_form.Designer.cs">
       <DependentUpon>Painter_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataCURD_form.cs">
+    <Compile Include="DataCRUD_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataCURD_form.Designer.cs">
-      <DependentUpon>DataCURD_form.cs</DependentUpon>
+    <Compile Include="DataCRUD_form.Designer.cs">
+      <DependentUpon>DataCRUD_form.cs</DependentUpon>
     </Compile>
     <Compile Include="DynamicNew_form.cs">
       <SubType>Form</SubType>
@@ -140,8 +140,8 @@
     <EmbeddedResource Include="Painter_form.resx">
       <DependentUpon>Painter_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataCURD_form.resx">
-      <DependentUpon>DataCURD_form.cs</DependentUpon>
+    <EmbeddedResource Include="DataCRUD_form.resx">
+      <DependentUpon>DataCRUD_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DynamicNew_form.resx">
       <DependentUpon>DynamicNew_form.cs</DependentUpon>

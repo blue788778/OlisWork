@@ -96,7 +96,7 @@
             this.Controls.Add(this.txtJWrite);
             this.Controls.Add(this.btnWrite);
             this.Name = "Json_form";
-            this.Text = "Form6_Json";
+            this.Text = "Json";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -123,7 +123,7 @@
             this.btnOne.Name = "btnOne";
             this.btnOne.Size = new System.Drawing.Size(340, 68);
             this.btnOne.TabIndex = 1;
-            this.btnOne.Text = "button1";
+            this.btnOne.Text = "btnA";
             this.btnOne.UseVisualStyleBackColor = true;
             // 
             // btnTwo
@@ -133,7 +133,7 @@
             this.btnTwo.Name = "btnTwo";
             this.btnTwo.Size = new System.Drawing.Size(340, 68);
             this.btnTwo.TabIndex = 2;
-            this.btnTwo.Text = "button2";
+            this.btnTwo.Text = "btnB";
             this.btnTwo.UseVisualStyleBackColor = true;
             // 
             // btnThree
@@ -143,7 +143,7 @@
             this.btnThree.Name = "btnThree";
             this.btnThree.Size = new System.Drawing.Size(340, 68);
             this.btnThree.TabIndex = 3;
-            this.btnThree.Text = "button3";
+            this.btnThree.Text = "btnC";
             this.btnThree.UseVisualStyleBackColor = true;
             // 
             // btnFour
@@ -153,17 +153,17 @@
             this.btnFour.Name = "btnFour";
             this.btnFour.Size = new System.Drawing.Size(340, 68);
             this.btnFour.TabIndex = 4;
-            this.btnFour.Text = "button4";
+            this.btnFour.Text = "btnD";
             this.btnFour.UseVisualStyleBackColor = true;
             // 
-            // Form4
+            // Layout_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 536);
             this.Controls.Add(this.tlpShow);
-            this.Name = "Form4";
-            this.Text = "Form4";
+            this.Name = "Layout_form";
+            this.Text = "Layout";
             ((System.ComponentModel.ISupportInitialize)(this.picTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picOne)).EndInit();
             this.tlpShow.ResumeLayout(false);

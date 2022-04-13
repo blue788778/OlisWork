@@ -102,7 +102,7 @@
             this.lblPicture.TabIndex = 6;
             this.lblPicture.Text = "拍照";
             // 
-            // Form5
+            // WebCam_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,8 +114,8 @@
             this.Controls.Add(this.cboResolution);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.vspShow);
-            this.Name = "Form5";
-            this.Text = "Form5";
+            this.Name = "WebCam_form";
+            this.Text = "WebCam";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.webCam_Closed);
             this.Load += new System.EventHandler(this.webCam_Load);
             this.ResumeLayout(false);

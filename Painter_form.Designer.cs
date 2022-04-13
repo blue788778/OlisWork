@@ -81,7 +81,7 @@
             // setMenu_PenColor
             // 
             this.setMenu_PenColor.Name = "setMenu_PenColor";
-            this.setMenu_PenColor.Size = new System.Drawing.Size(98, 22);
+            this.setMenu_PenColor.Size = new System.Drawing.Size(180, 22);
             this.setMenu_PenColor.Text = "顏色";
             this.setMenu_PenColor.Click += new System.EventHandler(this.clgColor_Click);
             // 
@@ -90,7 +90,7 @@
             this.setMenu_PenSize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripComboBox1});
             this.setMenu_PenSize.Name = "setMenu_PenSize";
-            this.setMenu_PenSize.Size = new System.Drawing.Size(98, 22);
+            this.setMenu_PenSize.Size = new System.Drawing.Size(180, 22);
             this.setMenu_PenSize.Text = "筆寬";
             // 
             // toolStripComboBox1
@@ -140,15 +140,15 @@
             this.tspMenuLine.Text = "線條";
             this.tspMenuLine.Click += new System.EventHandler(this.tspMenuLine_Click);
             // 
-            // Painter
+            // Painter_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.panDraw);
-            this.Name = "Painter";
-            this.Text = "Form1";
+            this.Name = "Painter_form";
+            this.Text = "Painter";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panDraw_firstpoint_Down);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panDraw_tonewpoint_Move);
             ((System.ComponentModel.ISupportInitialize)(this.panDraw)).EndInit();

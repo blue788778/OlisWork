@@ -59,7 +59,7 @@
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.txtUrl);
             this.Name = "Thread_form";
-            this.Text = "Form7";
+            this.Text = "Thread";
             this.ResumeLayout(false);
             this.PerformLayout();
 

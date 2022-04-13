@@ -38,7 +38,7 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(134, 77);
             this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "出來";
+            this.btnAdd.Text = "產生";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -50,15 +50,15 @@
             this.panShow.Size = new System.Drawing.Size(704, 305);
             this.panShow.TabIndex = 1;
             // 
-            // DynamicNew
+            // DynamicNew_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panShow);
             this.Controls.Add(this.btnAdd);
-            this.Name = "DynamicNew";
-            this.Text = "Form3";
+            this.Name = "DynamicNew_form";
+            this.Text = "DynamicNew";
             this.ResumeLayout(false);
             this.PerformLayout();
 

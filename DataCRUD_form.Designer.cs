@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class DataCURD_form
+    partial class DataCRUD_form
     {
         /// <summary>
         /// Required designer variable.
@@ -167,7 +167,7 @@
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgvShow);
             this.Name = "DataCURD_form";
-            this.Text = "Form2";
+            this.Text = "DataCRUD";
             this.Load += new System.EventHandler(this.dataCURD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();
             this.ResumeLayout(false);

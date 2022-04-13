@@ -7,14 +7,14 @@ using WindowsFormsApp1;
 
 namespace OlisWork
 {
-    public partial class DataCURD_form : Form
+    public partial class DataCRUD_form : Form
     {
         SqlConnection con = new SqlConnection("Data Source=PC-OLI;Initial Catalog=WorkDataControl_Student;Integrated Security=True");
         int Mar = 0;
         int StuID = 0;
         
 
-        public DataCURD_form()
+        public DataCRUD_form()
         {
             InitializeComponent();
         }

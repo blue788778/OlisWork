@@ -61,7 +61,7 @@
             this.txtRead.Size = new System.Drawing.Size(293, 183);
             this.txtRead.TabIndex = 2;
             // 
-            // Xml
+            // Xml_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -69,8 +69,8 @@
             this.Controls.Add(this.txtRead);
             this.Controls.Add(this.txtWrite);
             this.Controls.Add(this.btnWrite);
-            this.Name = "Xml";
-            this.Text = "Form6_XML";
+            this.Name = "Xml_form";
+            this.Text = "XML";
             this.ResumeLayout(false);
             this.PerformLayout();
 

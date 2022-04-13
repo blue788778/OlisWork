@@ -41,14 +41,14 @@
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
-            // ThreadBrowse
+            // ThreadBrowse_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.webBrowser);
-            this.Name = "ThreadBrowse";
-            this.Text = "Form7_Browse";
+            this.Name = "ThreadBrowse_form";
+            this.Text = "ThreadBrowse";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.threadBrowse_FormClosed);
             this.ResumeLayout(false);
 

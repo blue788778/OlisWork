@@ -81,7 +81,7 @@
             this.lblRead.TabIndex = 4;
             this.lblRead.Text = "讀取文字";
             // 
-            // Txt
+            // Txt_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,7 +91,8 @@
             this.Controls.Add(this.txtRead);
             this.Controls.Add(this.txtWrite);
             this.Controls.Add(this.btnWrite);
-            this.Name = "Txt";
+            this.Name = "Txt_form";
+            this.Text = "Txt";
             this.ResumeLayout(false);
             this.PerformLayout();
 
