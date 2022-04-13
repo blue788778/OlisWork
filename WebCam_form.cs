@@ -16,33 +16,43 @@ using WindowsFormsApp1;
 
 namespace OlisWork
 {
-    public partial class WebCam : Form
+    public partial class WebCam_form : Form
     {
-        public WebCam()
+        FilterInfoCollection VideoDevices = null;
+        VideoCaptureDevice VideoSource = null;
+        Bitmap MyBitmap = null;
+        SaveFileDialog MySaveFileDialog = null;
+        int SelectedDeviceIndex = 0;
+        string FileName = "";
+
+
+        public WebCam_form()
         {
             InitializeComponent();
         }
 
 
-        FilterInfoCollection VideoDevices;
-        VideoCaptureDevice VideoSource;
-        int SelectedDeviceIndex = 0;
+        private void webCam_Load(object sender, EventArgs e)
+        {
+            // 載入裝置鏡頭資料
+            webCam_Set();
+        }
 
 
         // 開啟視窗時載入，預設的資料、處理
-        private void webCam_Load(object sender, EventArgs e)
+        private void webCam_Set()
         {
             try
             {
-                /// TEST
-                //int a = 1;
-                //int b = a / 0;
+                // TEST
+                int a = 1;
+                int b = a / 0;
 
-                if(VideoDevices != null)
+                if (VideoDevices != null)
                 {
                     VideoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
-                    VideoSource = new VideoCaptureDevice(VideoDevices[SelectedDeviceIndex].MonikerString);       // 連接鏡頭，使用預設本機的鏡頭
-                    VideoSource.VideoResolution = VideoSource.VideoCapabilities[SelectedDeviceIndex];            // 解析度，使用預設本機鏡頭的解析度
+                    VideoSource = new VideoCaptureDevice(VideoDevices[SelectedDeviceIndex].MonikerString);   // 連接鏡頭，使用預設本機的鏡頭
+                    VideoSource.VideoResolution = VideoSource.VideoCapabilities[SelectedDeviceIndex];        // 解析度，使用預設本機鏡頭的解析度
                     vspShow.VideoSource = VideoSource;
 
                     // 將本機鏡頭支援的解析度加入至ComBox的選項
@@ -59,10 +69,10 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "webCam_Load() 鏡頭資料載入錯誤");
+                WriteLog.OliWriteLog(ex, "webCam_Set() 鏡頭資料載入錯誤");
             }
         }
-        
+
 
         // 選擇解析度，選擇解析度好後會關閉鏡頭(需在按Open按鈕重開)
         private void cbo_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,7 +85,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "cbo_SelectedIndexChanged() 裝置解析度錯誤");
+                WriteLog.OliWriteLog(ex, "cbo_SelectedIndexChanged() 裝置解析度錯誤");
             }
         }
 
@@ -96,7 +106,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "btn_Open_Click() 開啟鏡頭錯誤");
+                WriteLog.OliWriteLog(ex, "btn_Open_Click() 開啟鏡頭錯誤");
             }
         }
 
@@ -110,22 +120,24 @@ namespace OlisWork
                 {
                     return;
                 }
-
-                Bitmap bitmap = vspShow.GetCurrentVideoFrame();
-                string fileName = "Work" + DateTime.Now.ToString("yyyy-MM-dd") + ".jpg";           // 自訂檔案預設名字
-                SaveFileDialog saveFileDialog = new SaveFileDialog();                              // 給使用者選取儲存檔案的位置 / SaveFileDialog()-初始化這個類別的新執行個體
-                saveFileDialog.FileName = fileName;                                                // 存檔時檔案名字=檔案預設名字
-                saveFileDialog.Filter = "jpeg (*.jpeg)|*.jpeg";                                    // 預設檔案類型使用JPEG
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)                                // ShowDialog()-呼叫對話方塊 / DialogResult.OK-對話方塊的傳回值
+                else
                 {
-                    bitmap.Save(saveFileDialog.FileName);                                          // 儲存檔案
-                    bitmap.Dispose();
+                    MyBitmap = vspShow.GetCurrentVideoFrame();
+                    FileName = "Work" + DateTime.Now.ToString("yyyy-MM-dd") + ".jpg";                   // 自訂檔案預設名字
+                    MySaveFileDialog = new SaveFileDialog();                                            // 給使用者選取儲存檔案的位置 / SaveFileDialog()-初始化這個類別的新執行個體
+                    MySaveFileDialog.FileName = FileName;                                               // 存檔時檔案名字=檔案預設名字
+                    MySaveFileDialog.Filter = "jpeg (*.jpeg)|*.jpeg";                                   // 預設檔案類型使用JPEG
+
+                    if (MySaveFileDialog.ShowDialog() == DialogResult.OK)                               // ShowDialog()-呼叫對話方塊 / DialogResult.OK-對話方塊的傳回值
+                    {
+                        MyBitmap.Save(MySaveFileDialog.FileName);                                       // 儲存檔案
+                        MyBitmap.Dispose();
+                    }
                 }
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "btn_Pic_Click() 儲存檔案錯誤");
+                WriteLog.OliWriteLog(ex, "btn_Pic_Click() 儲存檔案錯誤, FileName:" + FileName);
             }
         }
 
@@ -135,11 +147,14 @@ namespace OlisWork
         {
             try
             {
-                vspShow.Stop();
+                if(VideoSource != null)
+                {
+                    vspShow.Stop();
+                }
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "webCam_Closed() 關閉視窗/鏡頭錯誤");
+                WriteLog.OliWriteLog(ex, "webCam_Closed() 關閉視窗/鏡頭錯誤");
             }
         }
     }

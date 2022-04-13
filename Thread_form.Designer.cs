@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class Thread
+    partial class Thread_form
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,7 @@
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(800, 22);
             this.txtUrl.TabIndex = 0;
+            this.txtUrl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUrl_KeyDown);
             // 
             // btnGo
             // 
@@ -50,14 +51,14 @@
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btn_Click);
             // 
-            // Thread
+            // Thread_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.txtUrl);
-            this.Name = "Thread";
+            this.Name = "Thread_form";
             this.Text = "Form7";
             this.ResumeLayout(false);
             this.PerformLayout();

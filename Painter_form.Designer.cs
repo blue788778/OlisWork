@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class Painter
+    partial class Painter_form
     {
         /// <summary>
         /// 設計工具所需的變數。
@@ -35,7 +35,7 @@
             this.setMenu_PenColor = new System.Windows.Forms.ToolStripMenuItem();
             this.setMenu_PenSize = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.cld = new System.Windows.Forms.ColorDialog();
             this.ctms_Circle = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tspMenuRound = new System.Windows.Forms.ToolStripMenuItem();
             this.tspMenuRect = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +83,7 @@
             this.setMenu_PenColor.Name = "setMenu_PenColor";
             this.setMenu_PenColor.Size = new System.Drawing.Size(98, 22);
             this.setMenu_PenColor.Text = "顏色";
-            this.setMenu_PenColor.Click += new System.EventHandler(this.SetPenColorItem_Click);
+            this.setMenu_PenColor.Click += new System.EventHandler(this.clgColor_Click);
             // 
             // setMenu_PenSize
             // 
@@ -117,26 +117,26 @@
             this.tspMenuRect,
             this.tspMenuLine});
             this.ctms_Circle.Name = "contextMenuStrip_Circle";
-            this.ctms_Circle.Size = new System.Drawing.Size(181, 92);
+            this.ctms_Circle.Size = new System.Drawing.Size(99, 70);
             // 
             // tspMenuRound
             // 
             this.tspMenuRound.Name = "tspMenuRound";
-            this.tspMenuRound.Size = new System.Drawing.Size(188, 22);
+            this.tspMenuRound.Size = new System.Drawing.Size(98, 22);
             this.tspMenuRound.Text = "圓形";
-            this.tspMenuRound.Click += new System.EventHandler(this.tspMenu_Round_Click);
+            this.tspMenuRound.Click += new System.EventHandler(this.tspMenuRound_Click);
             // 
             // tspMenuRect
             // 
             this.tspMenuRect.Name = "tspMenuRect";
-            this.tspMenuRect.Size = new System.Drawing.Size(188, 22);
+            this.tspMenuRect.Size = new System.Drawing.Size(98, 22);
             this.tspMenuRect.Text = "方形";
-            this.tspMenuRect.Click += new System.EventHandler(this.tspMenu_Rect_Click);
+            this.tspMenuRect.Click += new System.EventHandler(this.tspMenuRect_Click);
             // 
             // tspMenuLine
             // 
             this.tspMenuLine.Name = "tspMenuLine";
-            this.tspMenuLine.Size = new System.Drawing.Size(180, 22);
+            this.tspMenuLine.Size = new System.Drawing.Size(98, 22);
             this.tspMenuLine.Text = "線條";
             this.tspMenuLine.Click += new System.EventHandler(this.tspMenuLine_Click);
             // 
@@ -168,7 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem setMenu_PenColor;
         private System.Windows.Forms.ToolStripMenuItem setMenu_PenSize;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
-        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.ColorDialog cld;
         private System.Windows.Forms.ContextMenuStrip ctms_Circle;
         private System.Windows.Forms.ToolStripMenuItem tspMenuRound;
         private System.Windows.Forms.ToolStripMenuItem tspMenuRect;

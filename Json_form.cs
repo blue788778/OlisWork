@@ -14,20 +14,23 @@ using WindowsFormsApp1;
 
 namespace OlisWork
 {
-    public partial class Json : Form
+    public partial class Json_form : Form
     {
-        string path = @"C:\Users\Oli\Desktop\1.json";
-        string JsonFile;
+        NameJson MyNameJ = null;
+        JArray JsonArray = null;
+        string Output = "";
+        string Path = @"C:\Users\Oli\Desktop\1.json";
+        string JsonFile = "";
 
 
-        public Json()
+        public Json_form()
         {
             InitializeComponent();
         }
 
 
         // JSON Name class
-        public class NameJ
+        public class NameJson
         {
             public string Name;
         }
@@ -36,20 +39,20 @@ namespace OlisWork
         // 將資料寫入JSON檔
         public void write()
         {
-            //NameJ name = new NameJ();
-            //name.Name = textBoxJWrite.Text;
+            //NameJson myjobject = new NameJson();
+            //myjobject.Name = textBoxJWrite.Text;
 
             try
             {
-                NameJ nameJ = new NameJ()
+                MyNameJ = new NameJson()
                 {
                     Name = txtJWrite.Text,
                 };
 
-                var name = JObject.FromObject(nameJ);                          // JObject用來操作JSON物件，FromObject(nameJ)是要轉化的對象，返回一個JObject物件
-                string output = JsonConvert.SerializeObject(name);             // 序列化
+                var myjobject = JObject.FromObject(MyNameJ);                   // JObject用來操作JSON物件，FromObject(nameJ)是要轉化的對象，返回一個JObject物件
+                Output = JsonConvert.SerializeObject(myjobject);               // 序列化
 
-                File.WriteAllText(path, $"[{txtJRead.Text+ output}]");
+                File.WriteAllText(Path, $"[{txtJRead.Text+ Output}]");
 
                 txtJWrite.Text = "";                                           // 清空資料
 
@@ -58,7 +61,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "write() 寫入JSON錯誤", "");
+                WriteLog.OliWriteLog(ex, "write() 寫入JSON錯誤, Output:" + Output);
             }
         }
 
@@ -70,15 +73,15 @@ namespace OlisWork
 
             try
             {
-                if (path != null)
+                if (Path != null)
                 {
-                    JsonFile = File.ReadAllText(path);
+                    JsonFile = File.ReadAllText(Path);
+                    JsonArray = JArray.Parse(JsonFile);                        // JArry是JSON的陣列
 
-                    JArray jsonarray = JArray.Parse(JsonFile);                     // JArry是JSON的陣列
                     // JsonArray陣列中有無資料
-                    for (int i = 0; i <= jsonarray.Count - 1; i++)
+                    for (int i = 0; i <= JsonArray.Count - 1; i++)
                     {
-                        txtJRead.Text += jsonarray[i].ToString() + "," + "\r\n";
+                        txtJRead.Text += JsonArray[i].ToString() + "," + "\r\n";
                     }
                 }
                 else
@@ -88,7 +91,7 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "read() 讀取JSON錯誤", "");
+                WriteLog.OliWriteLog(ex, "read() 讀取JSON錯誤, JsonFile:" + JsonFile);
             }
         }
 

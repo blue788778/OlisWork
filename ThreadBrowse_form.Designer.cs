@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class DynamicNew
+    partial class ThreadBrowse_form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.panShow = new System.Windows.Forms.Panel();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // btnAdd
+            // webBrowser
             // 
-            this.btnAdd.Location = new System.Drawing.Point(328, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(134, 77);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "出來";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(800, 450);
+            this.webBrowser.TabIndex = 0;
+            this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
             // 
-            // panShow
-            // 
-            this.panShow.AutoSize = true;
-            this.panShow.Location = new System.Drawing.Point(46, 108);
-            this.panShow.Name = "panShow";
-            this.panShow.Size = new System.Drawing.Size(704, 305);
-            this.panShow.TabIndex = 1;
-            // 
-            // DynamicNew
+            // ThreadBrowse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panShow);
-            this.Controls.Add(this.btnAdd);
-            this.Name = "DynamicNew";
-            this.Text = "Form3";
+            this.Controls.Add(this.webBrowser);
+            this.Name = "ThreadBrowse";
+            this.Text = "Form7_Browse";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.threadBrowse_FormClosed);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Panel panShow;
+        private System.Windows.Forms.WebBrowser webBrowser;
     }
 }

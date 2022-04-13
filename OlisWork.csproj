@@ -68,66 +68,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Painter.cs">
+    <Compile Include="Painter_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Painter.Designer.cs">
-      <DependentUpon>Painter.cs</DependentUpon>
+    <Compile Include="Painter_form.Designer.cs">
+      <DependentUpon>Painter_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataCURD.cs">
+    <Compile Include="DataCURD_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataCURD.Designer.cs">
-      <DependentUpon>DataCURD.cs</DependentUpon>
+    <Compile Include="DataCURD_form.Designer.cs">
+      <DependentUpon>DataCURD_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="DynamicNew.cs">
+    <Compile Include="DynamicNew_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DynamicNew.Designer.cs">
-      <DependentUpon>DynamicNew.cs</DependentUpon>
+    <Compile Include="DynamicNew_form.Designer.cs">
+      <DependentUpon>DynamicNew_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Layout.cs">
+    <Compile Include="Layout_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Layout.Designer.cs">
-      <DependentUpon>Layout.cs</DependentUpon>
+    <Compile Include="Layout_form.Designer.cs">
+      <DependentUpon>Layout_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="WebCam.cs">
+    <Compile Include="WebCam_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WebCam.Designer.cs">
-      <DependentUpon>WebCam.cs</DependentUpon>
+    <Compile Include="WebCam_form.Designer.cs">
+      <DependentUpon>WebCam_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Txt.cs">
+    <Compile Include="Txt_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Txt.Designer.cs">
-      <DependentUpon>Txt.cs</DependentUpon>
+    <Compile Include="Txt_form.Designer.cs">
+      <DependentUpon>Txt_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Json.cs">
+    <Compile Include="Json_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Json.Designer.cs">
-      <DependentUpon>Json.cs</DependentUpon>
+    <Compile Include="Json_form.Designer.cs">
+      <DependentUpon>Json_form.cs</DependentUpon>
     </Compile>
     <Compile Include="WriteLog.cs" />
-    <Compile Include="Xml.cs">
+    <Compile Include="Xml_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Xml.Designer.cs">
-      <DependentUpon>Xml.cs</DependentUpon>
+    <Compile Include="Xml_form.Designer.cs">
+      <DependentUpon>Xml_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Thread.cs">
+    <Compile Include="Thread_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Thread.Designer.cs">
-      <DependentUpon>Thread.cs</DependentUpon>
+    <Compile Include="Thread_form.Designer.cs">
+      <DependentUpon>Thread_form.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThreadBrowse.cs">
+    <Compile Include="ThreadBrowse_form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThreadBrowse.Designer.cs">
-      <DependentUpon>ThreadBrowse.cs</DependentUpon>
+    <Compile Include="ThreadBrowse_form.Designer.cs">
+      <DependentUpon>ThreadBrowse_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,35 +137,35 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkDataControl_StudentDataSet1.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Painter.resx">
-      <DependentUpon>Painter.cs</DependentUpon>
+    <EmbeddedResource Include="Painter_form.resx">
+      <DependentUpon>Painter_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataCURD.resx">
-      <DependentUpon>DataCURD.cs</DependentUpon>
+    <EmbeddedResource Include="DataCURD_form.resx">
+      <DependentUpon>DataCURD_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DynamicNew.resx">
-      <DependentUpon>DynamicNew.cs</DependentUpon>
+    <EmbeddedResource Include="DynamicNew_form.resx">
+      <DependentUpon>DynamicNew_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Layout.resx">
-      <DependentUpon>Layout.cs</DependentUpon>
+    <EmbeddedResource Include="Layout_form.resx">
+      <DependentUpon>Layout_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WebCam.resx">
-      <DependentUpon>WebCam.cs</DependentUpon>
+    <EmbeddedResource Include="WebCam_form.resx">
+      <DependentUpon>WebCam_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Txt.resx">
-      <DependentUpon>Txt.cs</DependentUpon>
+    <EmbeddedResource Include="Txt_form.resx">
+      <DependentUpon>Txt_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Json.resx">
-      <DependentUpon>Json.cs</DependentUpon>
+    <EmbeddedResource Include="Json_form.resx">
+      <DependentUpon>Json_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Xml.resx">
-      <DependentUpon>Xml.cs</DependentUpon>
+    <EmbeddedResource Include="Xml_form.resx">
+      <DependentUpon>Xml_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Thread.resx">
-      <DependentUpon>Thread.cs</DependentUpon>
+    <EmbeddedResource Include="Thread_form.resx">
+      <DependentUpon>Thread_form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThreadBrowse.resx">
-      <DependentUpon>ThreadBrowse.cs</DependentUpon>
+    <EmbeddedResource Include="ThreadBrowse_form.resx">
+      <DependentUpon>ThreadBrowse_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

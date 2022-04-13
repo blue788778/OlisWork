@@ -16,7 +16,7 @@ namespace OlisWork
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WebCam());
+            Application.Run(new Painter_form());
         }
     }
 }

@@ -10,20 +10,14 @@ using System.Windows.Forms;
 using WindowsFormsApp1;
 namespace OlisWork
 {
-    public partial class ThreadBrowse : Form
+    public partial class ThreadBrowse_form : Form
     {
-        public ThreadBrowse(string url)
+        public ThreadBrowse_form(string url)
         {
             InitializeComponent();
-            try
-            {
-                // 開啟網址
-                open(url);
-            }
-            catch (Exception ex)
-            {
-                WriteLog.WriteLogg(ex, "ThreadBrowse() 開啟網址錯誤");
-            }
+
+            // 開啟網址
+            open(url);
         }
 
 
@@ -37,13 +31,13 @@ namespace OlisWork
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "open() 前往網址錯誤");
+                WriteLog.OliWriteLog(ex, "open() 前往網址錯誤");
             }
         }
 
 
         // 關閉執行緒
-        private void ThreadBrowse_FormClosed(object sender, FormClosedEventArgs e)
+        private void threadBrowse_FormClosed(object sender, FormClosedEventArgs e)
         {
             webBrowser.Dispose();
         }

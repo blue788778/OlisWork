@@ -10,12 +10,16 @@ using System.Windows.Forms;
 using WindowsFormsApp1;
 namespace OlisWork
 {
-    public partial class DynamicNew : Form
+    public partial class DynamicNew_form : Form
     {
         int Counter = 1;
+        Panel MyPan = null;
+        Label MyLbl = null;
+        Button MyBtn = null;
+        string MyBtnSplit = "";
 
 
-        public DynamicNew()
+        public DynamicNew_form()
         {
             InitializeComponent();
         }
@@ -24,40 +28,37 @@ namespace OlisWork
         // 按下按鈕動態產生Panel(含Label、button)
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Panel myPan = new Panel();
-            Label myLbl = new Label();
-            Button myBtn = new Button();
-
             try
             {
                 for (int i = 0; i < Counter; i++)
                 {
                     // 產生Panel在預設的Panel上
-                    myPan.Size = new Size(700, 50);
-                    myPan.Name = "panel_" + Counter;
-                    myPan.Location = new Point(0, 100 * i);
-                    myPan.BackColor = Color.Gray;
-                    panShow.Controls.Add(myPan);
+                    MyPan = new Panel();
+                    MyPan.Size = new Size(700, 50);
+                    MyPan.Location = new Point(0, 100 * i);
+                    MyPan.BackColor = Color.Gray;
+                    MyPan.Name = "pan_" + Counter;
+                    panShow.Controls.Add(MyPan);
 
                     // 產生Label在產生出的Panel上
-                    myLbl = new Label();
-                    myLbl.AutoSize = true;
-                    myLbl.Size = new Size(20, 20);
-                    myLbl.Location = new Point();
-                    myLbl.Name = "label_" + Counter;
-                    myLbl.Text = myLbl.Name;
-                    myPan.Controls.Add(myLbl);
+                    MyLbl = new Label();
+                    MyLbl.AutoSize = true;
+                    MyLbl.Size = new Size(20, 20);
+                    MyLbl.Location = new Point();
+                    MyLbl.Name = "lbl_" + Counter;
+                    MyLbl.Text = MyLbl.Name;
+                    MyPan.Controls.Add(MyLbl);
 
                     // 產生Button在產生出的Panel上
-                    myBtn = new Button();
-                    myBtn.Size = new Size(100, 50);
-                    myBtn.Location = new Point(500, 0);
-                    myBtn.Name = "button_" + Counter;
-                    myBtn.Text = myBtn.Name;
-                    myPan.Controls.Add(myBtn);
+                    MyBtn = new Button();
+                    MyBtn.Size = new Size(100, 50);
+                    MyBtn.Location = new Point(500, 0);
+                    MyBtn.Name = "btn_" + Counter;
+                    MyBtn.Text = MyBtn.Name;
+                    MyPan.Controls.Add(MyBtn);
 
                     // button 的事件委派 click 事件
-                    myBtn.Click += dynamic_btn_Click;
+                    MyBtn.Click += dynamic_btn_Click;
                 }
                 Counter++;
 
@@ -68,7 +69,7 @@ namespace OlisWork
             }
             catch (Exception ex)
             {
-                WriteLog.WriteLogg(ex, "btnAdd_Click() 動態產生錯誤");
+                WriteLog.OliWriteLog(ex, "btnAdd_Click() 動態產生錯誤, MyPan.Name:" + MyPan.Name + ", MyLbl.Name:" + MyLbl.Name + ", MyBtn.Name:" + MyBtn.Name);
             }
         }
 
@@ -81,28 +82,28 @@ namespace OlisWork
                 // 內部轉換方法
                 Button button = (Button)sender;
                 // 分割成陣列 button_1, 條件用 ('_'), ["button" , "1"]
-                string btnSplit = button.Text.Split('_')[1];
+                MyBtnSplit = button.Text.Split('_')[1];
 
                 // 在預設的Panel上產生物件的Item
                 foreach (Control item in panShow.Controls)
                 {
-                    if (item.Name.Contains(btnSplit))
+                    if (item.Name.Contains(MyBtnSplit))
                     {
                         // 在創建的Panel上產生物件的Item
                         foreach (Control item2 in item.Controls)
                         {
                             if (item2.Name.Contains("label"))
                             {
-                                btnSplit = item2.Text;
+                                MyBtnSplit = item2.Text;
                             }
                         }
                     }
                 }
-                MessageBox.Show(btnSplit);
+                MessageBox.Show(MyBtnSplit);
             }
             catch(Exception ex)
             {
-                WriteLog.WriteLogg(ex, "dynamic_btn_Click() 產生動態產生事件錯誤");
+                WriteLog.OliWriteLog(ex, "dynamic_btn_Click() 產生動態產生事件錯誤, MyBtnSplit:" + MyBtnSplit);
             }
         }
     }

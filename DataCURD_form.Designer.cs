@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class DataCURD
+    partial class DataCURD_form
     {
         /// <summary>
         /// Required designer variable.
@@ -136,6 +136,7 @@
             this.cboGrade.Name = "cboGrade";
             this.cboGrade.Size = new System.Drawing.Size(121, 20);
             this.cboGrade.TabIndex = 8;
+            this.cboGrade.Text = "1";
             // 
             // studentTableAdapter
             // 
@@ -176,7 +177,7 @@
             this.workDataControl_StudentDataSet1.DataSetName = "WorkDataControl_StudentDataSet";
             this.workDataControl_StudentDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // DataCURD
+            // DataCURD_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,7 +193,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgvShow);
-            this.Name = "DataCURD";
+            this.Name = "DataCURD_form";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.dataCURD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShow)).EndInit();

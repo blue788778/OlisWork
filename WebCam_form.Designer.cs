@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class WebCam
+    partial class WebCam_form
     {
         /// <summary>
         /// Required designer variable.

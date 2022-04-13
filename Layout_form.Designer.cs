@@ -1,6 +1,6 @@
 ﻿namespace OlisWork
 {
-    partial class Layout
+    partial class Layout_form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Layout));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Layout_form));
             this.picTwo = new System.Windows.Forms.PictureBox();
             this.picOne = new System.Windows.Forms.PictureBox();
             this.tlpShow = new System.Windows.Forms.TableLayoutPanel();
